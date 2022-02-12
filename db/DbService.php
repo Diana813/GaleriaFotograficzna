@@ -1,5 +1,4 @@
 <?php
-
 class DbService
 {
     public static function selectUserData(): string

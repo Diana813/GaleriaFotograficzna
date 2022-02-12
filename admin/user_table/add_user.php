@@ -10,7 +10,7 @@ $users = new Users();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data_to_store = array_filter($_POST);
     $last_id = $users->addUser($mysqli, $data_to_store['username'], $data_to_store['email'],
-        password_hash($data_to_store['password'], PASSWORD_DEFAULT), $data_to_store['admin']);
+        password_hash($data_to_store['password'], PASSWORD_DEFAULT), $data_to_store['administrator']);
     if ($last_id) {
         $_SESSION['success'] = "Dodano!";
         header('location: users_file.php');

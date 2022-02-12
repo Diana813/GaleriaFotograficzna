@@ -43,7 +43,7 @@ $mysqli->close();
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Zatwierdź">
-            <a class="btn btn-link ml-2" href="/welcome_page/welcome_page.php">Anuluj</a>
+            <a class="btn btn-link ml-2" href="/login/login_file.php">Anuluj</a>
         </div>
     </form>
 </div>

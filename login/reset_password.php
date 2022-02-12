@@ -34,7 +34,7 @@ class ResetPassword{
                     $param_id = $_SESSION["id"];
                     if ($stmt->execute()) {
                         session_destroy();
-                        header("location: /login/AdminLogin.php");
+                        header("location: /welcome_page/welcome_page.php");
                         exit();
                     } else {
                         echo "Oops! Później...";

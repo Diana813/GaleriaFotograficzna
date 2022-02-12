@@ -17,7 +17,7 @@ class Users
     {
         $sql = DbService::insertUser();
         if ($stmt = $mysqli->prepare($sql)) {
-            $stmt->bind_param("ssss", $username, $email, $password, $admin);
+            $stmt->bind_param("sssi", $username, $email, $password, $admin);
             $username = $name;
             $email = $mail;
             $password = $pass;

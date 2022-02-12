@@ -3,7 +3,7 @@ class UserVerification
 {
     public static function checkIfUserIsLoggedIn(){
         if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-            header("location: " . $_SERVER["DOCUMENT_ROOT"]."/login/AdminLogin.php");
+            header("location: /login/login_file.php");
             exit;
         }
     }

@@ -14,8 +14,8 @@
     </div>
 
     <div class="form-group">
-        <label for="admin">Admin (1-tak, 0-nie) *</label>
-        <input  type="text" name="admin" value="<?php echo htmlspecialchars($edit ? $user['admin'] : '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="Admin" class="form-control" required="required" id="admin">
+        <label for="administrator">Admin (1-tak, 0-nie) *</label>
+        <input  type="text" name="administrator" value="<?php echo htmlspecialchars($edit ? $user['administrator'] : '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="Admin" class="form-control" required="required" id="administrator">
     </div>
 
     <div class="form-group text-center">
