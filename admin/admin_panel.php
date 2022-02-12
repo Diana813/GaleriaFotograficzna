@@ -28,7 +28,8 @@ $mysqli->close();
                 <h1 class="page-header">Centrum zarządzania światem <i class="fa-solid fa-face-flushed"></i></h1>
             </div>
         </div>
-        <section class="h-100 h-custom bg-light">
+        <div class="row">
+        <section class="bg-light">
             <div class="row justify-content-evenly">
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
@@ -94,14 +95,7 @@ $mysqli->close();
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
         </section>
-    </div>
-    <div class="row">
-        <div class="col-lg-8">
-        </div>
-        <div class="col-lg-4">
-        </div>
     </div>
 </div>
 </div>

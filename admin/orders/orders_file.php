@@ -27,7 +27,7 @@ $mysqli->close();
 <div class="content" id="page-wrapper">
     <div class="row">
         <div class="col-lg-6">
-            <h1 class="page-header">Zamówienia</h1>
+            <h1 class="page-header">Przeglądaj zamówienia</h1>
         </div>
     </div>
     <table class="table table-striped table-bordered table-condensed">
@@ -45,9 +45,6 @@ $mysqli->close();
                 <td><?php echo $row['id']; ?></td>
                 <td><?php echo($row['image']); ?></td>
                 <td><?php echo($row['email']); ?></td>
-                <td>
-                    <a href="delete_order.php?order_id=<?php echo $row['id']; ?>" class="btn btn-danger delete_btn"><i class="fa-solid fa-dumpster"></i></a>
-                </td>
             </tr>
         <?php endforeach; ?>
         </tbody>

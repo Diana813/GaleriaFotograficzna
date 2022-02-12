@@ -60,8 +60,6 @@ $mysqli->close();
                     <td><?php echo($row['price']); ?></td>
                     <td><?php echo($row['currency']); ?></td>
                     <td>
-                        <a href="edit_photo.php?image_id=<?php echo $row['id']; ?>&operation=edit"
-                           class="btn btn-primary"><i class="fa-solid fa-pencil"></i></a>
                         <a href="delete_photo.php?image_id=<?php echo $row['id']; ?>" class="btn btn-danger delete_btn"><i class="fa-solid fa-dumpster"></i></a>
                     </td>
                 </tr>

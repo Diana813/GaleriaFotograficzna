@@ -77,8 +77,4 @@ class DbService
         return "UPDATE product SET image = ?, description= ?, price =?, currency= ? WHERE id = ?";
     }
 
-    public static function deleteOrder($product)
-    {
-        return "DELETE FROM orders WHERE product = $product";
-    }
 }

@@ -58,8 +58,6 @@ $mysqli->close();
                 <td><?php echo($row['created_at']); ?></td>
                 <td><?php echo($row['administrator']); ?></td>
                 <td>
-                    <a href="edit_user.php?user_id=<?php echo $row['id']; ?>&operation=edit"
-                       class="btn btn-primary"><i class="fa-solid fa-pencil"></i></a>
                     <a href="delete_user.php?user_id=<?php echo $row['id']; ?>" class="btn btn-danger delete_btn"><i class="fa-solid fa-dumpster"></i></a>
                 </td>
             </tr>
