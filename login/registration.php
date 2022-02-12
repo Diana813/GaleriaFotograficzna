@@ -1,5 +1,7 @@
 <?php
-class Registration{
+
+class Registration
+{
     public string $confirm_password = '';
     public string $password = '';
     public string $username = '';
@@ -18,12 +20,13 @@ class Registration{
         $this->user_verification = $user_verification;
     }
 
-    private function getFormData(mysqli $mysqli, string $data, string &$field, $sql, &$err){
-        if(empty(trim($_POST[$data]))){
+    private function getFormData(mysqli $mysqli, string $data, string &$field, $sql, &$err)
+    {
+        if (empty(trim($_POST[$data]))) {
             $err = ErrorStrings::$empty_err;
-        } elseif($data == "username" AND (!preg_match("/^[_a-zA-Z0-9-]+$/", trim($_POST[$data])))){
+        } elseif ($data == "username" and (!preg_match("/^[_a-zA-Z0-9-]+$/", trim($_POST[$data])))) {
             $err = ErrorStrings::$wrong_digits_err;
-        }else{
+        } else {
             $stmt = $mysqli->prepare($sql);
             $stmt->bind_param("s", $param);
             $param = trim($_POST[$data]);
@@ -44,21 +47,23 @@ class Registration{
         return empty($this->username_err) && empty($this->email_err) && empty($this->password_err) && empty($this->confirm_password_err);
     }
 
-    public function registerUser(mysqli $mysqli){
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
+    public function registerUser(mysqli $mysqli)
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $this->getFormData($mysqli, "username", $this->username, DbService::getUserByName(), $this->username_err);
             $this->getFormData($mysqli, "email", $this->email, DbService::getUserByEmail(), $this->email_err);
             $this->user_verification->getPasswordFormData($this->password, $this->password_err);
             $this->user_verification->confirmPassword($this->password, $this->confirm_password_err,
                 $this->confirm_password, $this->password_err);
-            if($this->areDataValid()){
+            if ($this->areDataValid()) {
                 $sql = DbService::insertUser();
-                if($stmt = $mysqli->prepare($sql)){
-                    $stmt->bind_param("sss", $username,$email,  $password);
+                if ($stmt = $mysqli->prepare($sql)) {
+                    $stmt->bind_param("ssss", $username, $email, $password, $admin);
                     $username = $this->username;
                     $email = $this->email;
                     $password = password_hash($this->password, PASSWORD_DEFAULT);
-                    if($stmt->execute()){
+                    $admin = 0;
+                    if ($stmt->execute()) {
                         header("location: /login/login_file.php");
                     }
                     $stmt->close();

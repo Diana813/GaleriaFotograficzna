@@ -14,6 +14,9 @@
             <a href="/basket/basket_file.php"><i class="fa-solid fa-basket-shopping fa-3x m-2"></i></a>
             <a href="/login/reset_password_file.php" class="btn btn-warning ml-3 m-2">Resetuj hasło</a>
             <a href="/login/logout.php" class="btn btn-danger ml-3 m-2">Wyloguj się</a>
+            <?php if ($_SESSION["isAdmin"] == 1) { ?>
+                <a href="/admin/admin_panel.php" class="btn btn-success ml-3 m-2">Panel administracyjny</a>
+            <?php } ?>
         </div>
     </div>
 </div>

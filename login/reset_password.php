@@ -24,7 +24,6 @@ class ResetPassword{
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $this->user_verification->getPasswordFormData($this->new_password, $this->password_err);
-            var_dump($this->new_password);
             $this->user_verification->confirmPassword($this->new_password, $this->confirm_password_err,
                 $this->confirm_password, $this->password_err);
             if ($this->areDataValid()) {
@@ -35,7 +34,7 @@ class ResetPassword{
                     $param_id = $_SESSION["id"];
                     if ($stmt->execute()) {
                         session_destroy();
-                        header("location: /login/login_file.php");
+                        header("location: /login/AdminLogin.php");
                         exit();
                     } else {
                         echo "Oops! Później...";

@@ -4,7 +4,7 @@ class DbService
 {
     public static function selectUserData(): string
     {
-        return "SELECT id, username, password FROM users WHERE username = ?";
+        return "SELECT id, username, password, administrator FROM users WHERE username = ?";
     }
 
     public static function getUserByName(): string
@@ -19,7 +19,7 @@ class DbService
 
     public static function insertUser(): string
     {
-        return "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+        return "INSERT INTO users (username, email, password, administrator) VALUES (?, ?, ?, ?)";
     }
 
     public static function resetPassword(): string
@@ -37,10 +37,48 @@ class DbService
         return "SELECT image, description, price, currency FROM product WHERE `id` = $id";
     }
 
-
-    public static function removeProduct($id)
+    public static function getUsers()
     {
-        return "DELETE FROM product WHERE `id` = $id";
+        return "SELECT id, username, email, password, created_at, administrator FROM users";
     }
 
+    public static function updateUser(): string
+    {
+        return "UPDATE users SET username = ?, email= ?, password =?, administrator= ? WHERE id = ?";
+    }
+
+    public static function deleteUser($id): string
+    {
+        return "DELETE FROM users WHERE id = $id";
+    }
+
+    public static function deletePhoto($id): string
+    {
+        return "DELETE FROM product WHERE id = $id";
+    }
+
+    public static function insertProduct(): string
+    {
+        return "INSERT INTO product (image, description, price, currency) VALUES (?, ?, ?, ?)";
+    }
+
+    public static function getOrders()
+    {
+        return "SELECT u.id, u.email, p.image, p.id from users as u inner join orders as o on u.id = o.userID inner join product as p on p.id = o.product";
+    }
+
+    public static function addOrders()
+    {
+        return "INSERT INTO orders (userId, product) VALUES (?,?)";
+    }
+
+    public static function updatePhoto()
+    {
+        return "UPDATE product SET image = ?, description= ?, price =?, currency= ? WHERE id = ?";
+    }
+
+    public static function deleteOrder($product)
+    {
+        return "DELETE FROM orders WHERE product = $product";
+    }
 }

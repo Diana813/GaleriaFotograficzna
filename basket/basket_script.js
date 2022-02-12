@@ -40,33 +40,20 @@ var basketObject = {
         });
     },
 
-    loadingPayPal: function (obj) {
-        obj.live('click', function () {
-            var token = $(this).attr('id');
-            var image = "<div style.css=\"text-align:center\">";
-            image = image + "<img src=\"images/loadinfo.net.gif\"";
-            image = image + " alt=\"Proceeding to PayPal\" />";
-            image = image + "<br />Please wait while we are redirecting you to PayPal...";
-            image = image + "</div><div id=\"frm_pp\"></div>";
-            $('#big_basket').fadeOut(200, function () {
-                $(this).html(image).fadeIn(200, function () {
-                    basketObject.send2PayPal(token);
-                });
-            });
+    createOrder: function (obj) {
+        obj.on('click', function () {
+            var buttonLink = $(this);
+            jQuery.post("http://192.168.1.145/basket/create_order.php", {
+            }, function () {
+                alert("Zamówienie zostało przyjęte");
+            }, 'json');
             return false;
         });
-    },
-    sendToPayPal: function (token) {
-        jQuery.post('mod/paypal.php', {token: token}, function (data) {
-            $('#frm_pp').html(data);
-            // submit form automatically
-            $('#frm_paypal').submit();
-        }, 'html');
     }
 };
 $(document).ready(function () {
     basketObject.removeFromBasket($(".text-muted"));
     basketObject.addToBasket($(".btn"));
-    // basketObject.loadingPayPal($('.paypal'));
+    basketObject.createOrder($(".pay"));
 
 });

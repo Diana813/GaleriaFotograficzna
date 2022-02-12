@@ -13,7 +13,7 @@ $mysqli->close();
                       name="postData">
                     <div class="col">
                         <div class="card">
-                            <img src="<?php echo "/images/" . $product->image . ".jpg" ?>" class="card-img-top">
+                            <img src="<?php echo $product->image ?>" class="card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $product->price . "&nbsp" . $product->currency ?></h5>
                                 <p class="card-text"><?php echo $product->description ?></p>

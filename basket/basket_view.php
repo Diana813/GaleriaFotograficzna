@@ -34,8 +34,8 @@ $mysqli->close();
                                             <div class="row mb-4 d-flex justify-content-between align-items-center">
                                                 <div class="col-md-2 col-lg-2 col-xl-2">
                                                     <img
-                                                            src="<?php echo "/images/" . $item->image . ".jpg" ?>"
-                                                            class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                                            src="<?php echo $item->image ?>"
+                                                            class="img-fluid rounded-3">
                                                 </div>
                                                 <div class="col-md-3 col-lg-3 col-xl-3">
                                                     <h6 class="text-muted"><?php echo $item->description ?></h6>
@@ -82,11 +82,10 @@ $mysqli->close();
                                     </div>
 
                                     <a href="/payout/payout_file.php"
-                                    <button type="button" class="btn btn-dark btn-block btn-lg"
+                                    <button type="button" class="pay btn btn-dark btn-block btn-lg"
                                             data-mdb-ripple-color="dark">Zapłać:)
                                     </button>
                                     </a>
-
                                 </div>
                             </div>
                         </div>
