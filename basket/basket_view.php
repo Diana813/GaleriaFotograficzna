@@ -81,9 +81,11 @@ $mysqli->close();
                                         <h5><?php echo number_format($basket->total, 2) . " " . $item->currency ?></h5>
                                     </div>
 
+                                    <a href="/payout/payout_file.php"
                                     <button type="button" class="btn btn-dark btn-block btn-lg"
                                             data-mdb-ripple-color="dark">Zapłać:)
                                     </button>
+                                    </a>
 
                                 </div>
                             </div>
