@@ -1,6 +1,8 @@
 <?php
+session_start();
+require_once $_SERVER['DOCUMENT_ROOT'] . "/utils/Utils.php";
 
-if (!empty($_SESSION["basket"])) {
-    if ($_GET["id"] == $_SESSION["basket"][$_GET["id"]])
-        unset($_SESSION["basket"][$_GET["id"]]);
+if (isset($_POST['id'])) {
+    $id = $_POST['id'];
+    Utils::removeItem($id);
 }

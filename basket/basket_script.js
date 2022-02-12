@@ -1,7 +1,7 @@
 var basketObject = {
 
     removeFromBasket: function (obj) {
-        obj.live('click', function () {
+        obj.on('click', function () {
             var item = $(this).attr('rel');
             jQuery.post('http://192.168.1.145/basket/basket_remove.php', {id: item}, function (data) {
                 basketObject.refreshBasket();
@@ -11,7 +11,7 @@ var basketObject = {
     },
 
     refreshBasket: function () {
-        jQuery.post("http://192.168.1.145/basket/basket_view.php", function (data) {
+        jQuery.post("http://192.168.1.145/basket/basket_file.php", function (data) {
             $('#basket_view').html(data);
         }, 'html');
     },
@@ -43,7 +43,7 @@ var basketObject = {
     loadingPayPal: function (obj) {
         obj.live('click', function () {
             var token = $(this).attr('id');
-            var image = "<div style=\"text-align:center\">";
+            var image = "<div style.css=\"text-align:center\">";
             image = image + "<img src=\"images/loadinfo.net.gif\"";
             image = image + " alt=\"Proceeding to PayPal\" />";
             image = image + "<br />Please wait while we are redirecting you to PayPal...";
@@ -65,8 +65,8 @@ var basketObject = {
     }
 };
 $(document).ready(function () {
-    //basketObject.removeFromBasket($('.remove_basket'));
-    basketObject.addToBasket($(".ref-button"));
+    basketObject.removeFromBasket($(".text-muted"));
+    basketObject.addToBasket($(".btn"));
     // basketObject.loadingPayPal($('.paypal'));
 
 });

@@ -3,13 +3,7 @@
 class Basket
 {
     public $total = 0;
-    public $currency = "pln";
-    private bool $isBasketEmpty;
-
-    public function __construct()
-    {
-        $this->isBasketEmpty = empty($_SESSION['basket']) ? true : false;
-    }
+    public $numberOfItems;
 
     public static function addToBasketButton($productId)
     {
@@ -21,13 +15,22 @@ class Basket
             $label = "Dodaj do koszyka";
         }
 
-        $out = "<a href=\"#\" class=\"ref-button\"";
+        $out = "<a href=\"#\" class=\"btn btn-primary\"";
         $out .= $id == 0 ? " red" : null;
         $out .= "\" rel=\"";
         $out .= $productId . "_" . $id;
-        $out .= "\">{$label}</a>";
+        $out .= "\">$label</a>";
         return $out;
     }
 
+    public static function removeFromBasket($id)
+    {
+        if (!empty($id)) {
+            if (isset($_SESSION['basket'][$id])) {
+                return "<a href=\"#\" class=\"text-muted\" rel=" . $id . "><i class=\"fas fa-times\"></i></a>";
+            }
+        }
+        return null;
+    }
 
 }
